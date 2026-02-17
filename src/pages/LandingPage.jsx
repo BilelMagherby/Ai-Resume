@@ -9,63 +9,16 @@ import {
   Star,
   ChevronDown,
   Play,
-  CheckCircle
+  CheckCircle,
+  Target,
+  FileText,
+  Brain,
+  TrendingUp
 } from 'lucide-react'
 
 const LandingPage = () => {
-  const features = [
-    {
-      icon: Sparkles,
-      title: 'AI-Powered Optimization',
-      description: 'Smart suggestions to improve your CV content and keywords'
-    },
-    {
-      icon: Zap,
-      title: 'Lightning Fast',
-      description: 'Create professional CVs in minutes, not hours'
-    },
-    {
-      icon: Users,
-      title: 'Modern Templates',
-      description: 'Unique, non-traditional designs that stand out'
-    },
-    {
-      icon: Shield,
-      title: 'Secure & Private',
-      description: 'Your data is encrypted and always protected'
-    }
-  ]
-
-  const stats = [
-    { number: '10K+', label: 'CVs Created' },
-    { number: '95%', label: 'Success Rate' },
-    { number: '500+', label: 'Companies' },
-    { number: '4.9★', label: 'User Rating' }
-  ]
-
-  const testimonials = [
-    {
-      name: 'Sarah Johnson',
-      role: 'Software Developer',
-      content: 'SmartCV+ helped me land my dream job! The AI suggestions were incredibly valuable.',
-      avatar: 'SJ'
-    },
-    {
-      name: 'Michael Chen',
-      role: 'Product Designer',
-      content: 'The unique block system made my portfolio stand out. Got 3 interviews in one week!',
-      avatar: 'MC'
-    },
-    {
-      name: 'Emily Davis',
-      role: 'Marketing Manager',
-      content: 'Best CV builder I\'ve ever used. The modern designs are perfect for creative professionals.',
-      avatar: 'ED'
-    }
-  ]
-
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
       {/* Navigation */}
       <motion.nav
         initial={{ y: -20, opacity: 0 }}
@@ -74,9 +27,15 @@ const LandingPage = () => {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg" />
-              <span className="text-xl font-bold gradient-text">SmartCV+</span>
+            {/* Logo */}
+            <div className="flex items-center space-x-3">
+              <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-lg">CV</span>
+              </div>
+              <div className="flex flex-col">
+                <span className="text-xl font-bold gradient-text">SmartCV+</span>
+                <span className="text-xs text-gray-500">AI-Powered</span>
+              </div>
             </div>
 
             <div className="hidden md:flex items-center space-x-8">
@@ -100,199 +59,165 @@ const LandingPage = () => {
         </div>
       </motion.nav>
 
-      {/* Hero Section */}
-      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
+      {/* Hero Section - One Big Block */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-700 text-white">
+        <div className="absolute inset-0 bg-black opacity-10"></div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
           <div className="text-center">
             <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.5 }}
-              className="inline-flex items-center space-x-2 bg-blue-50 text-blue-700 px-4 py-2 rounded-full mb-8"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="max-w-4xl mx-auto"
             >
-              <Sparkles className="w-4 h-4" />
-              <span className="text-sm font-medium">AI-Powered CV Builder</span>
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+                <span className="block">Transform Your Career</span>
+                <span className="block text-yellow-300">with AI-Powered Resumes</span>
+              </h1>
+              
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="text-xl md:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto leading-relaxed"
+              >
+                <p className="font-light">
+                  Stop letting ATS systems reject your applications. Our intelligent resume builder 
+                  <span className="font-semibold text-white"> optimizes every word </span>
+                  for both human recruiters and automated systems, ensuring your skills get noticed.
+                </p>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"
+              >
+                <Link
+                  to="/cv-builder"
+                  className="inline-flex items-center px-8 py-4 bg-white text-blue-600 font-semibold rounded-lg hover:bg-blue-50 transition-all transform hover:scale-105 shadow-xl"
+                >
+                  <Sparkles className="w-5 h-5 mr-2" />
+                  Build Your Resume Now
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </Link>
+                
+                <Link
+                  to="/dashboard"
+                  className="inline-flex items-center px-8 py-4 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-blue-600 transition-all"
+                >
+                  <Play className="w-5 h-5 mr-2" />
+                  Watch Demo
+                </Link>
+              </motion.div>
+            </motion.div>
+          </div>
+
+          {/* Floating Elements */}
+          <div className="absolute top-20 left-10 w-20 h-20 bg-yellow-400 rounded-full opacity-20 animate-pulse"></div>
+          <div className="absolute bottom-20 right-10 w-32 h-32 bg-blue-400 rounded-full opacity-10 animate-bounce"></div>
+          <div className="absolute top-40 right-20 w-16 h-16 bg-purple-400 rounded-full opacity-15 animate-pulse"></div>
+        </div>
+
+        <div className="bg-white py-20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="text-center mb-16"
+            >
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                Why Most Resumes Fail (And How We Fix It)
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                The average job posting receives 250+ resumes. 75% are rejected by ATS systems before a human ever sees them.
+              </p>
             </motion.div>
 
-            <motion.h1
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.1 }}
-              className="text-5xl md:text-7xl font-bold mb-6"
-            >
-              <span className="gradient-text">Create Your Perfect</span>
-              <br />
-              <span className="text-gray-900">CV in Minutes</span>
-            </motion.h1>
+            <div className="grid md:grid-cols-3 gap-8 mb-16">
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.1 }}
+                viewport={{ once: true }}
+                className="text-center p-8 bg-red-50 rounded-xl border border-red-100"
+              >
+                <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Target className="w-8 h-8 text-red-600" />
+                </div>
+                <h3 className="text-xl font-bold text-red-900 mb-3">The Problem</h3>
+                <p className="text-gray-700 leading-relaxed">
+                  ATS systems can't read fancy formats, graphics, or complex layouts. 
+                  Most resumes look great to humans but are invisible to robots.
+                </p>
+              </motion.div>
 
-            <motion.p
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.2 }}
-              className="text-xl text-gray-600 mb-10 max-w-3xl mx-auto"
-            >
-              Build professional CVs and portfolios with our unique block-based system.
-              Stand out from the crowd with AI-optimized content and modern designs.
-            </motion.p>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                viewport={{ once: true }}
+                className="text-center p-8 bg-yellow-50 rounded-xl border border-yellow-100"
+              >
+                <div className="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Brain className="w-8 h-8 text-yellow-600" />
+                </div>
+                <h3 className="text-xl font-bold text-yellow-900 mb-3">Our Solution</h3>
+                <p className="text-gray-700 leading-relaxed">
+                  AI-powered optimization that transforms your content into ATS-friendly format 
+                  while maintaining professional appeal for human recruiters.
+                </p>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                viewport={{ once: true }}
+                className="text-center p-8 bg-green-50 rounded-xl border border-green-100"
+              >
+                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <TrendingUp className="w-8 h-8 text-green-600" />
+                </div>
+                <h3 className="text-xl font-bold text-green-900 mb-3">The Result</h3>
+                <p className="text-gray-700 leading-relaxed">
+                  10x higher interview rates. Your skills get seen by both robots 
+                  and humans, dramatically increasing your chances.
+                </p>
+              </motion.div>
+            </div>
 
             <motion.div
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.3 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              viewport={{ once: true }}
+              className="text-center"
             >
               <Link
                 to="/cv-builder"
-                className="group bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl font-medium hover:shadow-xl transition-all flex items-center space-x-2"
+                className="inline-flex items-center px-12 py-6 bg-gradient-to-r from-blue-600 to-purple-600 text-white text-lg font-bold rounded-xl hover:shadow-2xl transition-all transform hover:scale-105"
               >
-                <span>Start Building Free</span>
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                <FileText className="w-6 h-6 mr-3" />
+                Start Building Your ATS-Optimized Resume
+                <ArrowRight className="w-6 h-6 ml-3" />
               </Link>
-
-              <button className="group bg-white text-gray-900 px-8 py-4 rounded-xl font-medium border border-gray-300 hover:shadow-lg transition-all flex items-center space-x-2">
-                <Play className="w-5 h-5" />
-                <span>Watch Demo</span>
-              </button>
-            </motion.div>
-
-            <motion.div
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.4 }}
-              className="mt-12 flex justify-center"
-            >
-              <ChevronDown className="w-6 h-6 text-gray-400 animate-bounce" />
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((stat, index) => (
-              <motion.div
-                key={index}
-                initial={{ y: 20, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                transition={{ delay: index * 0.1 }}
-                className="text-center"
-              >
-                <div className="text-4xl font-bold gradient-text mb-2">{stat.number}</div>
-                <div className="text-gray-600">{stat.label}</div>
-              </motion.div>
-            ))}
-          </div>
+      {/* Footer */}
+      <div className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <p className="text-gray-500">
+            Join thousands who've transformed their job search with AI-powered resume optimization.
+          </p>
         </div>
-      </section>
-
-      {/* Features Section */}
-      <section id="features" className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ y: 20, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl font-bold mb-4">
-              <span className="gradient-text">Why Choose SmartCV+?</span>
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Experience the future of CV building with our innovative features
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {features.map((feature, index) => (
-              <motion.div
-                key={index}
-                initial={{ y: 20, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                transition={{ delay: index * 0.1 }}
-                className="block-container group cursor-pointer"
-              >
-                <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                  <feature.icon className="w-6 h-6 text-white" />
-                </div>
-                <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-                <p className="text-gray-600">{feature.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials Section */}
-      <section id="testimonials" className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ y: 20, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl font-bold mb-4">
-              <span className="gradient-text">What Our Users Say</span>
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Join thousands of professionals who've transformed their careers
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <motion.div
-                key={index}
-                initial={{ y: 20, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                transition={{ delay: index * 0.1 }}
-                className="block-container"
-              >
-                <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center text-white font-bold mr-4">
-                    {testimonial.avatar}
-                  </div>
-                  <div>
-                    <div className="font-semibold">{testimonial.name}</div>
-                    <div className="text-gray-600 text-sm">{testimonial.role}</div>
-                  </div>
-                </div>
-                <div className="flex mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
-                  ))}
-                </div>
-                <p className="text-gray-700 italic">"{testimonial.content}"</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto">
-          <motion.div
-            initial={{ scale: 0.9, opacity: 0 }}
-            whileInView={{ scale: 1, opacity: 1 }}
-            className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-12 text-center text-white"
-          >
-            <h2 className="text-4xl font-bold mb-4">
-              Ready to Transform Your Career?
-            </h2>
-            <p className="text-xl mb-8 opacity-90">
-              Join thousands of professionals who've already landed their dream jobs
-            </p>
-            <Link
-              to="/cv-builder"
-              className="bg-white text-blue-600 px-8 py-4 rounded-xl font-medium hover:shadow-xl transition-all inline-flex items-center space-x-2"
-            >
-              <span>Get Started Free</span>
-              <ArrowRight className="w-5 h-5" />
-            </Link>
-          </motion.div>
-        </div>
-      </section>
+      </div>
     </div>
   )
 }
