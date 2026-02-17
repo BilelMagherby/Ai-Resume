@@ -152,7 +152,7 @@ export const ATS_TIPS = [
 
 export const validateATSCompliance = (cvData, template) => {
   const issues = [];
-  const score = 100;
+  let score = 100;
   
   // Check required sections
   if (!cvData.personalInfo.summary) {

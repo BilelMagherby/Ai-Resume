@@ -127,12 +127,6 @@ const CVBuilder = () => {
         'controller': 'overseeing accounting operations and financial reporting',
         'payroll specialist': 'managing employee compensation and benefits administration',
         'procurement officer': 'negotiating supplier contracts and managing purchasing activities',
-        'administrative assistant': 'supporting office operations and improving workflow efficiency',
-        'financial analyst': 'evaluating financial performance and supporting investment decisions',
-        'auditor': 'reviewing financial records and ensuring regulatory compliance',
-        'controller': 'overseeing accounting operations and financial reporting',
-        'payroll specialist': 'managing employee compensation and benefits administration',
-        'procurement officer': 'negotiating supplier contracts and managing purchasing activities',
         'administrative assistant': 'supporting office operations and improving workflow efficiency'
       }
 
